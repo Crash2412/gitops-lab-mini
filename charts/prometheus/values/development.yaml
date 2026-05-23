@@ -1,0 +1,31 @@
+kube-prometheus-stack:
+  prometheusOperator:
+    enabled: true
+
+  ## Deploy a Prometheus instance
+  ##
+  prometheus:
+    enabled: true
+
+    ## Example service monitors
+    ##
+    ## Uncomment the following section to enable ingress-nginx service monitoring
+    ##
+    additionalServiceMonitors: []
+
+    ## Prometheus StorageSpec for persistent data
+    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/storage.md
+    ##
+    prometheusSpec:
+      replicas: 1
+      maximumStartupDurationSeconds: 60
+      retention: 180d
+      enableRemoteWriteReceiver: true
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: standard
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 5Gi
