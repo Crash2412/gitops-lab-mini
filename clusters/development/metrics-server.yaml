@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-github-username>/gitops-lab-mini.git
+    repoURL: https://github.com/Crash2412/gitops-lab-mini.git
     targetRevision: main
     path: charts/metrics-server
     helm:
